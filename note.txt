@@ -1,1 +1,6 @@
 - Khi nòa code thì nhớ pull về trước rồi hẳn code để commit.
+- git pull origin master 
+--(sau khi code xong)-->
+        git add .
+        git commit -m "comment"
+        git push origin master (đổi thành 'git push -f origin master' nếu lỗi)
