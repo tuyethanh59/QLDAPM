@@ -1,0 +1,1 @@
+- Khi nòa code thì nhớ pull về trước rồi hẳn code để commit.
