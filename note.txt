@@ -4,3 +4,4 @@
         git add .
         git commit -m "comment"
         git push origin master (đổi thành 'git push -f origin master' nếu lỗi)
+tui chỉ là hột mít kùi tro
