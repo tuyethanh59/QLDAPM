@@ -4,13 +4,3 @@
         git add .
         git commit -m "comment"
         git push origin master (đổi thành 'git push -f origin master' nếu lỗi)
-
-- Minh Kha Changed
-
-<<<<<<< HEAD
-- Levi Sửa ké laanf 3
-=======
-- Levi Sửa ké laanf 4
->>>>>>> 049351237dc41fa2e3ddb9b443127e89cf5c6287
-
-something
