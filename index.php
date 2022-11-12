@@ -3,9 +3,11 @@ require("model/database.php");
 require("model/danhmuc.php");
 require("model/mathang.php");
 require("model/giohang.php");
+require("model/nguoidung.php");
 
 $dm = new DANHMUC();
 $mh = new MATHANG();
+$nd = new NGUOIDUNG();
 $danhmuc = $dm->laydanhmuc();
 
 if(isset($_REQUEST["action"])){
@@ -37,6 +39,19 @@ switch($action){
         break;
 
     case"chovaogio":
+        if($nd->IsLoggedIn() != 1){
+            include('admin/ktnguoidung/SignIn.php');
+            break;
+        }
+        // If result matched $username and $password, table row must be 1 row
+        if ($count == 1) {
+            $_SESSION['logged_in'] = 'YES'; // put session value here 
+            header("location: index.php");
+        } else {
+            $error = "Your Login Name or Password is invalid";
+        }
+        
+
         if(isset($_REQUEST["id"]))
            $mahang=$_REQUEST["id"];
         if(isset($_REQUEST["soluong"]))

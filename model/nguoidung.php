@@ -1,5 +1,10 @@
 <?php
+$_SESSION['logged_in'] = 0;
 class NGUOIDUNG{
+	public function IsLoggedIn()
+	{
+		return $_SESSION['logged_in'];
+	}
 	// khai báo các thuộc tính (SV tự viết)
 	
 	public function kiemtranguoidunghople($email,$matkhau){
@@ -10,7 +15,9 @@ class NGUOIDUNG{
 			$cmd->bindValue(":email", $email);
 			$cmd->bindValue(":matkhau", md5($matkhau));
 			$cmd->execute();
-			$valid = ($cmd->rowCount () == 1);
+			$valid = ($cmd->rowCount() == 1);
+			if($valid)
+				$_SESSION['logged_in'] = 1;
 			$cmd->closeCursor ();
 			return $valid;			
 		}
