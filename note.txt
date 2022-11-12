@@ -6,3 +6,5 @@
         git push origin master (đổi thành 'git push -f origin master' nếu lỗi)
 
 - Minh Kha Changed
+
+- Levi Sửa ké
