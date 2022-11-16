@@ -22,7 +22,7 @@ $mathangnoibat = $mh->laymathangnoibat();
 switch($action){
     case "macdinh":
 		$tongmh=$mh->demtongsomathang();
-		$soluong=4;
+		$soluong=8;
 		$tongsotrang=ceil($tongmh/$soluong);
 		if(!isset($_REQUEST["trang"]))
 			$tranghh=1;
@@ -50,8 +50,6 @@ switch($action){
         } else {
             $error = "Your Login Name or Password is invalid";
         }
-        
-
         if(isset($_REQUEST["id"]))
            $mahang=$_REQUEST["id"];
         if(isset($_REQUEST["soluong"]))

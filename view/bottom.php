@@ -4,7 +4,8 @@
     <span class="glyphicon glyphicon-chevron-up"></span>
   </a><br><br>
   <h2><a href="index.php">Dreams Shop</a></h2>
-  <p>18 Ung Văn Khiêm, Đông Xuyên, TP Long Xuyên</p>  
+  <p>18 Ung Văn Khiêm, Đông Xuyên, TP Long Xuyên</p>
+  <P>DREAM STORE - Cung cấp dụng cụ vẽ từ bán chuyên đến chuyên nghiệp. Là đại lý chính hãng nhiều thương hiệu hội họa quốc tế tại Việt Nam.</P>  
 </footer>
 
 <script>

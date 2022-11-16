@@ -4,6 +4,14 @@
 <div class="container">  
   <div class="row"> <!-- Tất cả mặt hàng - Xử lý phân trang -->
      <a name="sptatca"></a>
+	 <td>
+	 <li class="nav-item n2"  type="none">
+		<marquee onmouseover="this.stop();" onmouseout="this.start();"
+		behavior="scroll" direction="left" scrollamount=4>
+				<h1><b>CHÀO MỪNG ĐẾN VỚI CỬA HÀNG BUÔN BÁN HỌA CỤ DREAM </b></h1>			
+		</marquee>
+	</li>
+</td>
      <h3>Tất cả sản phẩm </h3>
     <?php
     foreach($mathang as $mh):

@@ -38,6 +38,7 @@
 </head>
 <body id="abc" data-spy="scroll" data-target=".navbar" data-offset="50">
 
+
 <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container">
     <div class="navbar-header">
@@ -46,11 +47,13 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
+     
       <a class="navbar-brand" href="index.php"><span class="glyphicon glyphicon-home"></span> Dream Shop</a>
     </div>
+    
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-         
+     
         <li class="nav-item dropdown">
           <a class="nav-link" href="#" data-toggle="dropdown">
           <span class="glyphicon glyphicon-th"></span> Danh mục sản phẩm</a>
