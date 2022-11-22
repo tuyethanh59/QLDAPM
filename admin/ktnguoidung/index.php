@@ -72,3 +72,16 @@ switch($action){
         break;
 }
 ?>
+<body onload="setVolume();">
+<audio id="audi" autoplay loop >
+	<source src="../../images/d.mp3" type="audio/mpeg">
+</audio>
+
+
+<script type="text/javascript">
+var au = document.getElementById("audi");
+function setVolume() { 
+  au.volume = 4;
+} 
+</script>
+</body>
