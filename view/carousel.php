@@ -12,7 +12,7 @@
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
       <div class="item active">
-        <img src="images/carousel/l1.png" alt="Dreams Shop">
+        <img src="images/carousel/i1.png" alt="Dreams Shop">
         <div class="carousel-caption">
           <h3>Sản phẩm chất lượng</h3>
         </div>      
