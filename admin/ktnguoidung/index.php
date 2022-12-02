@@ -38,25 +38,19 @@ switch ($action) {
     case "xldangnhap":
         $email = $_POST["your_name"];
         $matkhau = $_POST["your_pass"];
-        if ($nguoidung->kiemtranguoidunghople($email, $matkhau) == TRUE) {
+        if ($nguoidung->kiemtranguoidunghople($email, $matkhau, true) == TRUE) {
             $_SESSION["nguoidung"] = $nguoidung->laythongtinnguoidung($email);
             include("main.php");
-        } else {
+        }
+         else {
             $tb = "Đăng nhập không thành công!";
             include("SignIn.php");
         }
         break;
-        case "xldangnhap1":
-            $email = $_POST["your_name"];
-            $matkhau = $_POST["your_pass"];
-            if ($nguoidung->kiemtranguoidunghople($email, $matkhau) == TRUE) {
-                $_SESSION["nguoidung"] = $nguoidung->laythongtinnguoidung($email);
-                include("../../view/top.php");
-            } else {
-                $tb = "Đăng nhập không thành công!";
-                include("SignIn.php");
-            }
-            break;
+    case "dangky":
+        include("SignUp.php");
+        break;  
+          
     case "capnhaths":
         $mand = $_POST["txtid"];
         $email = $_POST["your_name"];
@@ -83,17 +77,3 @@ switch ($action) {
 }
 ?>
 
-<body onload="setVolume();">
-    <audio id="audi" autoplay >
-        <source src="../../images/h.mp3" type="audio/mpeg">
-    </audio>
-
-
-    <script type="text/javascript">
-        var au = document.getElementById("audi");
-
-        function setVolume() {
-            au.volume = 100000.3;
-        }
-    </script>
-</body>

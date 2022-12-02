@@ -7,10 +7,13 @@ class NGUOIDUNG{
 	}
 	// khai báo các thuộc tính (SV tự viết)
 	
-	public function kiemtranguoidunghople($email,$matkhau){
+	public function kiemtranguoidunghople($email,$matkhau, $admin){
 		$db = DATABASE::connect();
 		try{
-			$sql = "SELECT * FROM nguoidung WHERE email=:email AND matkhau=:matkhau AND trangthai=1";
+			if($admin==1)
+				$sql = "SELECT * FROM nguoidung WHERE email=:email AND matkhau=:matkhau AND trangthai=1 and loai != 3";
+			else
+				$sql = "SELECT * FROM nguoidung WHERE email=:email AND matkhau=:matkhau AND trangthai=1 and loai=3";
 			$cmd = $db->prepare($sql);
 			$cmd->bindValue(":email", $email);
 			$cmd->bindValue(":matkhau", md5($matkhau));
@@ -37,6 +40,7 @@ class NGUOIDUNG{
 			$cmd->bindValue(":email", $email);
 			$cmd->execute();
 			$ketqua = $cmd->fetch();
+
 			$cmd->closeCursor();
 			return $ketqua;
 		}
@@ -57,6 +61,26 @@ class NGUOIDUNG{
 			$cmd->execute();
 			$ketqua = $cmd->fetchAll();			
 			return $ketqua;
+		}
+		catch(PDOException $e){
+			$error_message=$e->getMessage();
+			echo "<p>Lỗi truy vấn: $error_message</p>";
+			exit();
+		}
+	}
+
+	// Thêm khách
+	public function themkhachhang($email,$matkhau,$hoten){
+		$db = DATABASE::connect();
+		try{
+			$sql = "INSERT INTO nguoidung(email,matkhau,hoten,loai) VALUES(:email,:matkhau,:hoten,3)";
+			$cmd = $db->prepare($sql);
+			$cmd->bindValue(':email',$email);
+			$cmd->bindValue(':matkhau',md5($matkhau));
+			$cmd->bindValue(':hoten',$hoten);
+			$cmd->execute();
+			$id = $db->lastInsertId();
+			return $id;
 		}
 		catch(PDOException $e){
 			$error_message=$e->getMessage();

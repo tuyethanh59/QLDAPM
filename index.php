@@ -132,7 +132,7 @@ switch($action){
     case "xldangnhap":
         $email = $_POST["your_name"];
         $matkhau = $_POST["your_pass"];
-        if ($nd->kiemtranguoidunghople($email, $matkhau) == TRUE) {
+        if ($nd->kiemtranguoidunghople($email, $matkhau, 0) == TRUE) {
             $_SESSION["nguoidung"] = $nd->laythongtinnguoidung($email);
             
             $tongmh=$mh->demtongsomathang();
@@ -165,7 +165,28 @@ switch($action){
             include("SignIn1.php");
             break;  
         
-         
+        case "themkhachhang":
+            $hoten = $_POST["txthoten"];
+            $email = $_POST["txtemail"];
+            $matkhau = $_POST["txtmatkhau"];
+            $nlmatkhau = $_POST["txtnlmatkhau"];
+            if($nd->laythongtinnguoidung($email)){   // có thể kiểm tra thêm số đt không trùng
+                $tb = "Email này đã được cấp tài khoản!";
+                include("SignUp.php");
+                break;
+            }
+            else{
+                if(!$nd->themkhachhang($email,$matkhau,$hoten)){
+                    $tb = "Không thêm được!";
+                    include("SignUp.php");
+                    break;
+                }
+
+                include("SignIn1.php");
+                break;
+            }
+                    
+            break;
     default:
         break;
 }

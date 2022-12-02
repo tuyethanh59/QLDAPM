@@ -102,7 +102,7 @@
 
           <li><a href="?action=dangnhap"><span class="glyphicon glyphicon-user"></span> Đăng nhập nhập</a></li>
           
-          <li><a href="admin/ktnguoidung/SignUp.php"><span class="glyphicon glyphicon-user"></span> Đăng ký</a></li>
+          <li><a href="SignUp.php"><span class="glyphicon glyphicon-user"></span> Đăng ký</a></li>
           <?php }?>
 
           <li><a href="#" class="text-warning">
