@@ -84,7 +84,7 @@ switch ($action) {
 ?>
 
 <body onload="setVolume();">
-    <audio id="audi" autoplay loop>
+    <audio id="audi" autoplay >
         <source src="../../images/h.mp3" type="audio/mpeg">
     </audio>
 

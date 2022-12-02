@@ -165,9 +165,7 @@ switch($action){
             include("SignIn1.php");
             break;  
         
-        case "trangchuu":
-            include("index.php");
-        break;   
+         
     default:
         break;
 }
