@@ -19,10 +19,53 @@ class MATHANG{
             exit();
         }
     }
+
+    //dem tong so mat hang
+    public function demtongsomathangtimkiem($tukhoa){
+        $dbcon = DATABASE::connect();
+        try{
+            $sql = "SELECT COUNT(*) FROM mathang where tenmathang LIKE CONCAT( '%', :tk, '%')";
+            $cmd = $dbcon->prepare($sql);
+            $cmd->bindValue(":tk",$tukhoa);
+            $cmd->execute();
+            $result = $cmd->fetchColumn();
+            //rsort($result); // sắp xếp giảm thay cho order by desc
+            return $result;
+        }
+        catch(PDOException $e){
+            $error_message = $e->getMessage();
+            echo "<p>Lỗi truy vấn: $error_message</p>";
+            exit();
+        }
+    }
+
+    // Lấy mặt hàng phân trang, bắt đầu từ mâu 4 tin
+public function laymathangphantrangtimkiem($m, $n,$tukhoa){
+    $dbcon = DATABASE::connect();
+    
+    try{
+        $sql = "SELECT m.*, d.tendanhmuc
+         FROM mathang m, danhmuc d 
+         WHERE d.id=m.danhmuc_id and tenmathang LIKE CONCAT( '%', :tk, '%')
+         ORDER BY id DESC 
+         LIMIT $m, $n";
+        $cmd = $dbcon->prepare($sql);
+        $cmd->bindValue(":tk",$tukhoa);
+        $cmd->execute();
+        $ketqua = $cmd->fetchAll();
+        return $ketqua;
+    }
+    catch(PDOException $e){
+        $error_message = $e->getMessage();
+        echo "<p>Lỗi truy vấn: $error_message</p>";
+        exit();
+    }
+}
     
 // Lấy mặt hàng phân trang, bắt đầu từ mâu 4 tin
 public function laymathangphantrang($m, $n){
     $dbcon = DATABASE::connect();
+    
     try{
         $sql = "SELECT m.*, d.tendanhmuc
          FROM mathang m, danhmuc d 
@@ -40,6 +83,8 @@ public function laymathangphantrang($m, $n){
         exit();
     }
 }
+
+
     
 	// Lấy mặt hàng nổi bật top 4 có lượt xem cao nhất
     public function laymathangnoibat(){

@@ -20,7 +20,7 @@ switch ($action) {
 
         include("main.php");
         break;
-    case "dangxuat":
+    case "dangxuat1":
 
         unset($_SESSION["nguoidung"]);
 
@@ -29,9 +29,12 @@ switch ($action) {
         //loginform.php
         include("SignIn.php");
         break;
+    
+
     case "dangnhap":
         include("SignIn.php");
         break;
+
     case "xldangnhap":
         $email = $_POST["your_name"];
         $matkhau = $_POST["your_pass"];
@@ -43,7 +46,17 @@ switch ($action) {
             include("SignIn.php");
         }
         break;
-
+        case "xldangnhap1":
+            $email = $_POST["your_name"];
+            $matkhau = $_POST["your_pass"];
+            if ($nguoidung->kiemtranguoidunghople($email, $matkhau) == TRUE) {
+                $_SESSION["nguoidung"] = $nguoidung->laythongtinnguoidung($email);
+                include("../../view/top.php");
+            } else {
+                $tb = "Đăng nhập không thành công!";
+                include("SignIn.php");
+            }
+            break;
     case "capnhaths":
         $mand = $_POST["txtid"];
         $email = $_POST["your_name"];

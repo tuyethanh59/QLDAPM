@@ -81,7 +81,7 @@
             <li><a href="#" data-toggle="modal" data-target="#fcapnhatthongtin"><span class="glyphicon glyphicon-edit"></span> Hồ sơ cá nhân</a></li>
             <li><a href="#" data-toggle="modal" data-target="#fdoimatkhau"><span class="glyphicon glyphicon-wrench"></span> Đổi mật khẩu</a></li>
             <li class="divider"></li>
-            <li><a href="../ktnguoidung/index.php?action=dangxuat"><span class="glyphicon glyphicon-log-out"></span> Thoát</a></li>
+            <li><a href="../ktnguoidung/index.php?action=dangxuat1"><span class="glyphicon glyphicon-log-out"></span> Thoát</a></li>
           </ul>  
           
         </div>

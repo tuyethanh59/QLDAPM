@@ -17,6 +17,17 @@ else{
     $action="macdinh"; 
 }
 
+// Biến cho biết ng dùng đăng nhập chưa
+$isLogin = isset($_SESSION["nguoidung"]);
+if (isset($_REQUEST["action"])) {
+    $action = $_REQUEST["action"];
+}  else {
+    $action = "macdinh";
+}
+
+$search = 0;
+$txtSearch = "";
+
 $mathangnoibat = $mh->laymathangnoibat();
 
 switch($action){
@@ -38,9 +49,33 @@ switch($action){
         include("main.php");
         break;
 
+    case "timkiem":
+        if(isset($_POST["txttukhoa"]))
+            $search = $_POST["txttukhoa"];
+        
+
+        $tongmh=$mh->demtongsomathangtimkiem($search);
+        $soluong=8;
+        $tongsotrang=ceil($tongmh/$soluong);
+        if(!isset($_REQUEST["trang"]))
+            $tranghh=1;
+        else
+            $tranghh=$_REQUEST["trang"];
+        if(	$tranghh > $tongsotrang)
+            $tranghh=$tongsotrang;
+        else if ($tranghh < 1)
+            $tranghh=1;
+        $batdau=($tranghh-1)*$soluong;
+
+        
+        $mathang=$mh->laymathangphantrangtimkiem($batdau,$soluong, $search);	
+        
+        include("main.php");
+        break;
+
     case"chovaogio":
-        if($nd->IsLoggedIn() != 1){
-            include('admin/ktnguoidung/SignIn.php');
+        if(!$isLogin){
+            include('SignIn1.php');
             break;
         }
         // If result matched $username and $password, table row must be 1 row
@@ -89,7 +124,50 @@ switch($action){
             include("detail.php");
         }
         break;
+
+    case "dangnhap":
+        include("SignIn1.php");
+        break;
+
+    case "xldangnhap":
+        $email = $_POST["your_name"];
+        $matkhau = $_POST["your_pass"];
+        if ($nd->kiemtranguoidunghople($email, $matkhau) == TRUE) {
+            $_SESSION["nguoidung"] = $nd->laythongtinnguoidung($email);
+            
+            $tongmh=$mh->demtongsomathang();
+            $soluong=8;
+            $tongsotrang=ceil($tongmh/$soluong);
+            if(!isset($_REQUEST["trang"]))
+                $tranghh=1;
+            else
+                $tranghh=$_REQUEST["trang"];
+            if(	$tranghh > $tongsotrang)
+                $tranghh=$tongsotrang;
+            else if ($tranghh < 1)
+                $tranghh=1;
+            $batdau=($tranghh-1)*$soluong;
+            $mathang=$mh->laymathangphantrang($batdau,$soluong);	
+        
+            include("main.php");
+        } else {
+            $tb = "Đăng nhập không thành công!";
+            include("SignIn1.php");
+        }
+        break;
+
+        case "dangxuat2":
+
+            unset($_SESSION["nguoidung"]);
     
+            $tb = "Cảm ơn chị iu!";
+            
+            include("SignIn1.php");
+            break;  
+        
+        case "trangchuu":
+            include("index.php");
+        break;   
     default:
         break;
 }

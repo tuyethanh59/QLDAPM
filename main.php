@@ -40,6 +40,7 @@
 
  <div class="row"> 
  <ul class='pagination'>
+	<p><?php echo $tongsotrang . $tranghh . $search?></p>
 	<li><a href="?trang=1">
 	<span class="glyphicon glyphicon-step-backward"></span></a></li>
 	<?php

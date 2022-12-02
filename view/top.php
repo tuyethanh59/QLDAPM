@@ -88,8 +88,23 @@
               <span class="glyphicon glyphicon-search"></span> Tìm kiếm</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="admin/ktnguoidung/index.php"><span class="glyphicon glyphicon-user"></span> Đăng nhập</a></li>
+          <?php if(isset($_SESSION["nguoidung"])) { ?>
+              <li>
+                <a href="#"><span class="glyphicon glyphicon-user"></span> Chào <?php echo $_SESSION["nguoidung"]["hoten"]; ?></a>
+                                       
+                <li class="divider"></li>
+                <li><a href="index.php?action=dangxuat2"><span class="glyphicon glyphicon-log-out"></span> Thoát</a></li>
+             
+              </li>
+              
+            <?php } else{?>
+
+
+          <li><a href="?action=dangnhap"><span class="glyphicon glyphicon-user"></span> Đăng nhập nhập</a></li>
+          
           <li><a href="admin/ktnguoidung/SignUp.php"><span class="glyphicon glyphicon-user"></span> Đăng ký</a></li>
+          <?php }?>
+
           <li><a href="#" class="text-warning">
               <span class="glyphicon glyphicon-shopping-cart"></span> Giỏ hàng
               <span class="badge"><?php echo demhangtronggio(); ?></span>
@@ -111,16 +126,17 @@
           <h4><span class="glyphicon glyphicon-search"></span> Bạn cần tìm gì ?</h4>
         </div>
         <div class="modal-body">
-          <form role="form">
+          <form role="form"  method="post">
+          <input type="hidden" name="action" value="timkiem">
             <div class="form-group">
               <label for="txttukhoa"><span class="glyphicon glyphicon-question"></span> Từ khóa: </label>
-              <input type="text" class="form-control" id="txttukhoa" placeholder="Nhập từ khóa">
+              <input type="text" class="form-control" id="txttukhoa" name="txttukhoa" placeholder="Nhập từ khóa">
             </div>
             <div class="form-group">
               <label for="optbang"> Trong: </label>
               <select name="optbang" class="form-control" id="optbang">
                 <option value="mathang">Sản phẩm</option>
-                <option value="baiviet">Tin tức</option>
+                <!-- <option value="baiviet">Tin tức</option> -->
               </select>
             </div>
             <button type="submit" class="btn btn-info">Tìm kiếm
