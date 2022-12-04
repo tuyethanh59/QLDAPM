@@ -83,7 +83,7 @@
           </li>
 
           <li><a href="#"><span class="glyphicon glyphicon-phone-alt"></span> Liên hệ</a></li>
-
+          <li><a href="draw/index.html"><span class="glyphicon glyphicon-phone-alt"></span> Vẽ tranh</a></li>
           <li><a href="#" data-toggle="modal" data-target="#modalTimKiem">
               <span class="glyphicon glyphicon-search"></span> Tìm kiếm</a></li>
         </ul>
@@ -103,6 +103,7 @@
           <li><a href="?action=dangnhap"><span class="glyphicon glyphicon-user"></span> Đăng nhập nhập</a></li>
           
           <li><a href="SignUp.php"><span class="glyphicon glyphicon-user"></span> Đăng ký</a></li>
+          
           <?php }?>
 
           <li><a href="#" class="text-warning">
