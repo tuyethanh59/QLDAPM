@@ -13,7 +13,7 @@
     @media screen and (max-width: 767px) { .row.content {height: auto;} }
   </style>
 </head>
-<body>
+<body >
 <!-- Menu mh nhỏ -->
 <nav class="navbar navbar-inverse visible-xs">
   <div class="container-fluid">
@@ -44,18 +44,15 @@
 <div class="container-fluid">
   <div class="row content">
     <!-- Menu mh lớn -->     
-    <div class="col-sm-3 sidenav hidden-xs">
+    <div class="col-sm-3 sidenav hidden-xs"style="background-color:black;">
       <h3>          
-        <span class="label label-info">A</span>
-        <span class="label label-warning">B</span>
-        <span class="label label-danger">C</span>
-        Shop
+        <img width=100% src="../images/SHOP.png" alt="logo">
       </h3><br>
       <ul class="nav nav-pills nav-stacked">
         <li class="active"><a href="#"><span class="glyphicon glyphicon-cog"></span> Bảng điều khiển</a></li>
         <li><a href="../qldanhmuc/index.php"><span class="glyphicon glyphicon-list-alt"></span> Quản lý danh mục</a></li>
         <li><a href="../qlmathang/index.php"><span class="glyphicon glyphicon-gift"></span> Quản lý mặt hàng</a></li>
-        <li><a href=""><span class="glyphicon glyphicon-list-alt"></span> Quản lý... (bổ sung)</a></li>
+        <li><a href="../Allproducts/index.php"><span class="glyphicon glyphicon-list-alt"></span> Quản lý đơn hàng</a></li>
         <?php
         if(isset($_SESSION["nguoidung"]) && $_SESSION["nguoidung"]["loai"]==1){
         ?>

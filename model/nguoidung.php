@@ -11,7 +11,7 @@ class NGUOIDUNG{
 		$db = DATABASE::connect();
 		try{
 			if($admin==1)
-				$sql = "SELECT * FROM nguoidung WHERE email=:email AND matkhau=:matkhau AND trangthai=1 and loai != 3";
+				$sql = "SELECT * FROM nguoidung WHERE email=:email  AND matkhau=:matkhau AND trangthai=1 and loai != 3";
 			else
 				$sql = "SELECT * FROM nguoidung WHERE email=:email AND matkhau=:matkhau AND trangthai=1 and loai=3";
 			$cmd = $db->prepare($sql);
@@ -70,12 +70,13 @@ class NGUOIDUNG{
 	}
 
 	// Thêm khách
-	public function themkhachhang($email,$matkhau,$hoten){
+	public function themkhachhang($email,$sodienthoai,$matkhau,$hoten){
 		$db = DATABASE::connect();
 		try{
-			$sql = "INSERT INTO nguoidung(email,matkhau,hoten,loai) VALUES(:email,:matkhau,:hoten,3)";
+			$sql = "INSERT INTO nguoidung(email,sodienthoai,matkhau,hoten,loai) VALUES(:email,:sodienthoai,:matkhau,:hoten,3)";
 			$cmd = $db->prepare($sql);
 			$cmd->bindValue(':email',$email);
+			$cmd->bindValue(':sodienthoai',$sodienthoai);
 			$cmd->bindValue(':matkhau',md5($matkhau));
 			$cmd->bindValue(':hoten',$hoten);
 			$cmd->execute();
@@ -93,7 +94,7 @@ class NGUOIDUNG{
 	public function themnguoidung($email,$matkhau,$sodt,$hoten,$loai){
 		$db = DATABASE::connect();
 		try{
-			$sql = "INSERT INTO nguoidung(email,matkhau,sodienthoai,hoten,loai) VALUES(:email,:matkhau,:sodt,:hoten,:loai)";
+			$sql = "INSERT INTO nguoidung(email,matkhau,sodienthoai,hoten,loai) VALUES(:email,,:matkhau,:sodt,:hoten,:loai)";
 			$cmd = $db->prepare($sql);
 			$cmd->bindValue(':email',$email);
 			$cmd->bindValue(':matkhau',md5($matkhau));

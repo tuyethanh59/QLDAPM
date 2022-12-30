@@ -1,18 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Vẽ Tranh</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="levi.css">
     <script src="script.js" defer></script>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
 </head>
+
 <body>
-    <div class="container"> 
+    <div class="container">
         <section class="tools-board">
             <div class="row">
+                <a href="../index.php"><span class="glyphicon glyphicon-home"></span> Trang Chủ</a> <br>
                 <lable class="titel">Shapes</lable>
                 <ul class="options ">
                     <li class="option tool" id="rectangle">
@@ -44,10 +48,10 @@
                         <img src="icons/eraser.svg " alt="">
                         <span>Eraser</span>
                     </li>
-                   
+
                     <li class="option">
                         <input type="range" id="size-slider" min="1" max="30" value="5">
-                        
+
                     </li>
                 </ul>
             </div>
@@ -61,7 +65,7 @@
                     <li class="option ">
                         <input type="color" id="color-picker" value="blue">
                     </li>
-                    
+
                 </ul>
             </div>
             <div class="row buttons">
@@ -74,4 +78,5 @@
         </section>
     </div>
 </body>
+
 </html>

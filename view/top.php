@@ -10,27 +10,11 @@
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <style>
-    h3 {
-      text-shadow: 2px 2px 2px silver;
-    }
-
-    .carousel-inner img {
-      width: 100%;
-      /* Set width to 100% */
-      margin: auto;
-    }
-
-    .carousel-caption h3 {
-      color: #fff !important;
-    }
-
-    @media (max-width: 600px) {
-      .carousel-caption {
-        display: none;
-        /* Hide the carousel text when the screen is less than 600 pixels wide */
-      }
-    }
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+  <link rel="stylesheet" href="csstchu/style.css"> 
+</head>
+<style>
+   
 
     footer {
       background-color: black;
@@ -43,84 +27,67 @@
       text-decoration: none;
     }
 
-    .navbar-inverse {
-      background-color: red;
-
-    }
+ 
   </style>
-</head>
-
-<body id="abc" data-spy="scroll" data-target=".navbar" data-offset="50">
+<body id="abc">
 
 
-  <nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
 
-        <a class="navbar-brand" href="index.php"><span class="glyphicon glyphicon-home"></span> Dream Shop</a>
-      </div>
-
-      <div class="collapse navbar-collapse" id="myNavbar">
-        <ul class="nav navbar-nav">
-
+<!-- new nav -->
+<div class="Maincontainer">
+        <nav>
+        <!-- <a class="navbar-brand" href="index.php"><span><img src="images/cc.jpg" width="40px" height="40px" style="border-radius:50%;"></span> CREAM COSMETIC</a> -->
+        <a  href="index.php"> <div class="logo"> Dream <b>.</b></div></a>
+          <ul class="navItems">
           <li class="nav-item dropdown">
-            <a class="nav-link" href="#" data-toggle="dropdown">
-              <span class="glyphicon glyphicon-th"></span> Danh mục sản phẩm</a>
-            </a>
+          <a class="nav-link" href="#" data-toggle="dropdown"><i class="fa-sharp fa-solid fa-bars"></i>
+            Danh mục sản phẩm
+          </a>
+          
+          <ul class="dropdown-menu" style="background-color:#ff3c7b;">
+            <?php            
+            foreach($danhmuc as $dm):
+            ?>
+            <li><a href="?action=xemnhom&madm=<?php echo $dm["id"]; ?>"><?php echo $dm["tendanhmuc"]; ?></a></li>
+            <?php endforeach; ?>
+          </ul>
+        </li>
+            <li><a href="lienhe.php"><i class="fa-sharp fa-solid fa-dragon"></i></span> Liên hệ</a></li>
+            <li><a href="draw/index.html"><i class="fa-solid fa-pen-ruler"></i> Vẽ tranh</a></li>
+            <li><a href="#"data-toggle="modal" data-target="#modalTimKiem"><span class="glyphicon glyphicon-search"></span> Tìm kiếm</a></li>
 
-            <ul class="dropdown-menu">
-              <?php
-              foreach ($danhmuc as $dm) :
-              ?>
-                <li><a href="?action=xemnhom&madm=<?php echo $dm["id"]; ?>"><?php echo $dm["tendanhmuc"]; ?></a></li>
-              <?php endforeach; ?>
-            </ul>
-          </li>
 
-          <li><a href="#"><span class="glyphicon glyphicon-phone-alt"></span> Liên hệ</a></li>
-          <li><a href="draw/index.html"><span class="glyphicon glyphicon-phone-alt"></span> Vẽ tranh</a></li>
-          <li><a href="#" data-toggle="modal" data-target="#modalTimKiem">
-              <span class="glyphicon glyphicon-search"></span> Tìm kiếm</a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <?php if(isset($_SESSION["nguoidung"])) { ?>
-              <li>
-                <a href="#"><span class="glyphicon glyphicon-user"></span> Chào <?php echo $_SESSION["nguoidung"]["hoten"]; ?></a>
-                                       
-                <li class="divider"></li>
-                <li><a href="index.php?action=dangxuat2"><span class="glyphicon glyphicon-log-out"></span> Thoát</a></li>
-             
-              </li>
+                
+            <?php if(isset($_SESSION["nguoidung"])) { ?>
+                <li >
+                  <a href="?action=xemthongtin&email"><span class="glyphicon glyphicon-user"></span> Chào <?php echo $_SESSION["nguoidung"]["hoten"]; ?></a>
+                                        
+                  <li class="divider"></li>
+                  <li><a href="index.php?action=dangxuat2"><span class="glyphicon glyphicon-log-out"></span> Thoát</a></li>
               
-            <?php } else{?>
+                </li>
+                
+              <?php } else{?>
 
 
-          <li><a href="?action=dangnhap"><span class="glyphicon glyphicon-user"></span> Đăng nhập nhập</a></li>
-          
-          <li><a href="SignUp.php"><span class="glyphicon glyphicon-user"></span> Đăng ký</a></li>
-          
-          <?php }?>
+            <li><a href="?action=dangnhap"><span class="glyphicon glyphicon-user"></span> Đăng nhập</a></li>
+            
+            <li><a href="SignUp.php"><span class="glyphicon glyphicon-user"></span> Đăng ký</a></li>
+            
+            <?php }?>
 
-          <li><a href="#" class="text-warning">
-              <span class="glyphicon glyphicon-shopping-cart"></span> Giỏ hàng
-              <span class="badge"><?php echo demhangtronggio(); ?></span>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+            <li><a href="?action=xemgiohang" class="text-warning">
+                <span class="glyphicon glyphicon-shopping-cart"></span> Giỏ hàng
+                <span class="badge"><?php echo demhangtronggio(); ?></span>
+              </a>
+            </li>
+          </ul>
+ 
+        </nav>
 
   <!-- Hộp tìm kiếm -->
   <div class="modal fade" id="modalTimKiem" role="dialog">
     <div class="modal-dialog">
-
-      <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">×</button>x
@@ -137,7 +104,6 @@
               <label for="optbang"> Trong: </label>
               <select name="optbang" class="form-control" id="optbang">
                 <option value="mathang">Sản phẩm</option>
-                <!-- <option value="baiviet">Tin tức</option> -->
               </select>
             </div>
             <button type="submit" class="btn btn-info">Tìm kiếm
@@ -150,4 +116,4 @@
     </div>
   </div>
 
-  <br>
+  

@@ -19,7 +19,7 @@
 <div class="signup-content">
 <div class="signup-form">
   <p><?php if(isset($tb)) echo $tb; ?></p>
-<h2 class="form-title">Sign up</h2>
+<h2 class="form-title">Đăng ký</h2>
 <form method="POST" action="index.php?action=themkhachhang" class="register-form" id="register-form">
 <div class="form-group">
 <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
@@ -28,6 +28,10 @@
 <div class="form-group">
 <label for="email"><i class="zmdi zmdi-email"></i></label>
 <input type="email" name="txtemail" id="email" placeholder="Email đăng nhập" />
+</div>
+<div class="form-group">
+<label for="sodienthoai"><i class="zmdi zmdi-sodienthoai"></i></label>
+<input type="sodienthoai" name="txtsodienthoai" id="sodienthoai" placeholder="Số điện thoại đăng nhập" />
 </div>
 <div class="form-group">
 <label for="pass"><i class="zmdi zmdi-lock"></i></label>
@@ -50,7 +54,7 @@
 </div>
 <div class="signup-image">
 <figure><img src="admin/ktnguoidung/images/signup-image.jpg" alt="sing up image"></figure>
-<a href="#" class="signup-image-link">I am already member</a>
+<a href="index.php"><span class="glyphicon glyphicon-home"></span> Trang Chủ</a>
 </div>
 </div>
 </div>

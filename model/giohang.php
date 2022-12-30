@@ -1,21 +1,15 @@
 <?php
+
 // Tạo mảng SESSION giohang rỗng nếu nó không tồn tại
 if (!isset($_SESSION['giohang']) ) {
     $_SESSION['giohang'] = array();
 }
 
 // Hàm thêm sản phẩm vào giỏ
-function themhangvaogio($mahang, $soluong) {
-    //Tạo thể hiện của lớp MATHANG
-    $mh_db = new MATHANG();
+function themhangvaogio($mahang, $soluong) {    
     //Cập nhập Số lượng vào SESSION - Làm tròn
-    $_SESSION['giohang'][$mahang] = round($soluong, 0);
-    //Lấy thông tin của sản phẩm dựa vào $mahang
-    
-    //Cập nhật thông tin của Mã danh mục và Tên danh mục vào mảng SESSION
-   
+    $_SESSION['giohang'][$mahang] = round($soluong, 0);    
 }
-
 
 // Cập nhật số lượng của giỏ hàng
 function capnhatsoluong($mahang, $soluong) {
@@ -49,13 +43,14 @@ function laygiohang() {
 
         // Lưu thông tin trong mảng items để hiển thị lên giỏ hàng
         $mh[$mahang]['tenhang'] = $m['tenmathang'];
+        $mh[$mahang]['hinhanh'] = $m['hinhanh'];
         $mh[$mahang]['giaban'] = $dongia;
         $mh[$mahang]['soluong'] = $solg;
         $mh[$mahang]['sotien'] = $sotien;
+        
     }
     return $mh;
 }
-
 
 // Đếm số sản phẩm trong giỏ hàng
 function demhangtronggio() {
@@ -87,11 +82,5 @@ function tinhtiengiohang () {
 function xoagiohang() {
     $_SESSION['giohang'] = array();
 }
-function tangsoluong($mahang){
-    $_SESSION['giohang'][$mahang] = $_SESSION['giohang'][$mahang] + 1;
-}
-function mathangcotronggio($mahang)
-{
-    return isset($_SESSION['giohang'][$mahang]);
-}
+
 ?>
